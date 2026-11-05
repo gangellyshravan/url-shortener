@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: url-shortener
+  datasource:
+    url: ${URLSHORTENER_JDBC_URL:jdbc:h2:file:./data/urlshortener;AUTO_SERVER=TRUE;NON_KEYWORDS=DAY}
+    username: ${URLSHORTENER_DB_USER:sa}
+    password: ${URLSHORTENER_DB_PASSWORD:}
+  flyway:
+    locations: classpath:db/migration
+urlshortener:
+  workflow:
+    max-parallel-tasks: ${WORKFLOW_MAX_PARALLEL_TASKS:4}
+    max-attempts: ${WORKFLOW_MAX_ATTEMPTS:3}
+    retry-delay-ms: ${WORKFLOW_RETRY_DELAY_MS:100}
+    max-retry-delay-ms: ${WORKFLOW_MAX_RETRY_DELAY_MS:1000}
+    task-timeout-ms: ${WORKFLOW_TASK_TIMEOUT_MS:30000}
